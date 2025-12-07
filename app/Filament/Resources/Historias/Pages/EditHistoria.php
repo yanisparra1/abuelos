@@ -14,6 +14,7 @@ class EditHistoria extends EditRecord
     {
         return [
             DeleteAction::make(),
+         
         ];
     }
 }

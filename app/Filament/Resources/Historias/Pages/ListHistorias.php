@@ -6,6 +6,8 @@ use App\Filament\Resources\Historias\HistoriaResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
+//use App\Models\User;
+
 class ListHistorias extends ListRecords
 {
     protected static string $resource = HistoriaResource::class;
@@ -14,6 +16,9 @@ class ListHistorias extends ListRecords
     {
         return [
             CreateAction::make(),
+           
+
+            
         ];
     }
 }
