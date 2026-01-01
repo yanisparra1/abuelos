@@ -21,7 +21,7 @@ class UserForm
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->columnSpanFull(),
-                DateTimePicker::make('email_verified_at'),
+            
                 TextInput::make('password')
                     ->password()
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
