@@ -91,6 +91,7 @@ class HistoriaForm
 
 
         CheckboxList::make('histmedicos')
+        ->label('Historia Medica y Padecimientos')
         ->relationship('histmedicos', 'nombre')
         ->columns(4)
         ->columnSpanFull(),

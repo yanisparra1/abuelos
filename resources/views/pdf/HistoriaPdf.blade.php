@@ -38,9 +38,9 @@
 
     <table>
         <tr>
-            <td><strong>Nombre: {{$historia->abuelo->nombre}} {{$historia->abuelo->apellido}}</strong>   Sexo {{$historia->abuelo->sexo}}</td>
-            <td><strong>Fecha:  </strong> 25/02/2025</td>
-            <td><strong>Genero:</strong>F </td>
+            <td><strong>Nombre: {{$historia->abuelo->nombre}} {{$historia->abuelo->apellido}}</strong>  </td>
+            <td><strong>Fecha:  </strong> {{ \Carbon\Carbon::now()->format('d/m/Y') }}</td>
+            <td><strong>Genero:</strong>F  / <strong>Edad:</strong> {{ \Carbon\Carbon::parse($historia->abuelo->fecha_nacimiento)->age }} </td>
            
         </tr>
         <tr>
@@ -48,7 +48,7 @@
                 <strong>Dirección:</strong>
                 {{$historia->abuelo->direccion}}
             </td>
-            <td><strong>Fecha de Nacimiento:</strong>  {{$historia->abuelo->fecha_nacimiento}}</td>
+            <td><strong>Fecha de Nacimiento:</strong>  {{ \Carbon\Carbon::parse($historia->abuelo->fecha_nacimiento)->format('d/m/Y') }}</td>
         </tr> 
 
     </table>
@@ -92,9 +92,9 @@
         <tr>
             <th  class="section-title">Operaciones y Hospitalizaciones</th>
         </tr>
-        @foreach ($historia->histmedicos as $histMedico)
+        @foreach ($historia->operaciones as $operacion)
             <tr>
-                <td><strong>{{ $histMedico->nombre }}</strong> </td>
+                <td><strong>{{ $operacion->detalles }}</strong> </td>
             </tr>
         @endforeach 
         
@@ -104,36 +104,27 @@
         <tr>
             <th class="section-title">Historia Médica de Padecimientos</th>
         </tr>
-        <tr>
-            <td><strong>Alta Presión:</strong> Sí</td>
-        </tr>
-        <tr>
-            <td><strong>Diabetes:</strong> No</td>
-        </tr>
-        <tr>
-            <td><strong>Cáncer:</strong> No</td>
-        </tr>
-        <tr>
-            <td><strong>Anemia:</strong> Sí</td>
-        </tr>
-        <tr>
-            <td><strong>Otros:</strong> Depresión</td>
-        </tr>
+   
+        @foreach ($historia->histmedicos as $histMedico)
+            <tr>
+                <td><strong>{{ $histMedico->nombre }}</strong> </td>
+            </tr>
+        @endforeach 
     </table>
 
     <table>
         <tr>
             <th class="section-title">Historial Familiar</th>
         </tr>
-        <tr>
-            <td><strong>Hijos:</strong> Fallecido</td>
-        </tr>
-        <tr>
-            <td><strong>Exposo(a):</strong> Nuestros</td>
-        </tr>
-        <tr>
-            <td><strong>Otros Familiares:</strong> Varias</td>
-        </tr>
+
+                @foreach ($historia->familias as $familia)
+            <tr>
+                <td><strong>{{ $familia->parentesco }}:</strong> {{ $familia->detalles }}</td>
+            </tr>
+        @endforeach 
+ 
+       
+ 
     </table>
 
 </body>

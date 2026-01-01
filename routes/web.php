@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
-    return view('welcome');
+   return redirect()->route('filament.gestion.auth.login');
 });
 //prueba
 Route::get('/create-pdf/{historia}', [HomeController::class, 'createPDF'])->name('createPDF');

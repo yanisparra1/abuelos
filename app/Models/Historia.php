@@ -46,4 +46,8 @@ class Historia extends Model
     {
         return $this->hasMany(Familia::class);
     }
+      public function operaciones(): BelongsToMany
+    {
+       return $this->belongsToMany(Operacion::class, 'historia_operacion');
+    }
 }

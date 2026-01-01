@@ -29,7 +29,11 @@ class GestionPanelProvider extends PanelProvider
             ->id('gestion')
             ->path('gestion')
             ->spa(hasPrefetching: true)
+             
             ->login()
+           // ->registration()
+
+            ->passwordReset()
             ->colors([
                 'primary' => Color::Amber,
             ])

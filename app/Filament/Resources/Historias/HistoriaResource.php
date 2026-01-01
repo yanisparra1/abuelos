@@ -36,6 +36,7 @@ class HistoriaResource extends Resource
     {
         return [
             RelationManagers\FamiliasRelationManager::class,
+             RelationManagers\OperacionesRelationManager::class,
         ];
     }
 

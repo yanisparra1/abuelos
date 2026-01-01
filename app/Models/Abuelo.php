@@ -29,4 +29,7 @@ class Abuelo extends Model
     {
         return $this->hasOne(Historia::class);
     }
+
+
+
 }
