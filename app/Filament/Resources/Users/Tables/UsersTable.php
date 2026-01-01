@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Users\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Actions\EditAction;
+use Filament\Actions\Action;
 
 class UsersTable
 {
@@ -26,6 +27,11 @@ class UsersTable
             ])
             ->recordActions([
                 EditAction::make(),
+                 Action::make('Veificado')
+                 ->action(function(User $user) {
+                    $user->email_verified_at = Date('now');
+                    $user->save();
+                 }),
             ]);
     }
 }
