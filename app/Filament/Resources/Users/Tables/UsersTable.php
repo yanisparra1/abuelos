@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Users\Tables;
 
+use App\Models\User;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Actions\EditAction;
@@ -25,13 +26,24 @@ class UsersTable
             ->filters([
                 //
             ])
-            ->recordActions([
+            ->actions([
                 EditAction::make(),
-                 Action::make('Veificado')
-                 ->action(function(User $user) {
-                    $user->email_verified_at = Date('now');
-                    $user->save();
-                 }),
+                 Action::make('Verificar')
+                     ->action(function(User $user) {
+                        $user->email_verified_at = now();
+                        $user->save();
+                     })
+                     ->visible(fn (User $user): bool => $user->email_verified_at === null)
+                     ->icon('heroicon-o-check-circle')
+                     ->color('success'),
+                 Action::make('Desverificar')
+                     ->action(function(User $user) {
+                        $user->email_verified_at = null;
+                        $user->save();
+                     })
+                     ->visible(fn (User $user): bool => $user->email_verified_at !== null)
+                     ->icon('heroicon-o-x-circle')
+                     ->color('danger'),
             ]);
     }
 }

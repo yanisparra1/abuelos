@@ -48,3 +48,22 @@ La tabla que lista las historias clínicas también ha sido optimizada para ser 
     *   Los botones de `Ver` y `Editar` ahora se muestran como **iconos** para un diseño más compacto y moderno.
 
 Estas mejoras transforman la gestión de historias clínicas en una tarea más rápida, eficiente y agradable para el usuario final.
+
+### Mejoras y Correcciones en el Recurso de Usuarios
+
+Se han solucionado errores críticos y se han añadido mejoras funcionales en el recurso de gestión de **Usuarios** (`UserResource`).
+
+**1. Diagnóstico y Solución de Errores Críticos**
+
+*   **Error en `UserForm.php`**: Se corrigió el uso de la clase `Filament\Schemas\Schema` por la correcta `Filament\Forms\Form`.
+*   **Error en `UsersTable.php`**: Se solucionó el error "Target class does not exist" importando el modelo `User` (`use App\Models\User;`).
+*   **Error de Clases de Acciones**: Se corrigió la importación de `EditAction` y `Action`, moviéndolas al espacio de nombres correcto `Filament\Actions` para evitar el error "Class not found".
+
+**2. Mejoras Funcionales en la Tabla de Usuarios (`UsersTable.php`)**
+
+*   **Acciones de Verificación Dinámicas**: Se ha implementado un sistema de botones de acción inteligente para gestionar el estado de verificación del email de un usuario:
+    *   **Botón "Verificar"**: Aparece solo para usuarios no verificados. Al hacer clic, registra la fecha de verificación. Tiene un estilo visual `success` (verde) y un icono `heroicon-o-check-circle`.
+    *   **Botón "Desverificar"**: Aparece solo para usuarios ya verificados. Al hacer clic, elimina la fecha de verificación (la establece en `null`), revirtiendo el estado. Tiene un estilo `danger` (rojo) y un icono `heroicon-o-x-circle`.
+    *   Esta funcionalidad proporciona un control de estado reversible y visualmente intuitivo directamente desde la tabla de usuarios.
+
+Estas correcciones y mejoras restauran la funcionalidad completa del CRUD de usuarios y añaden una capa de gestión más granular y eficiente.
