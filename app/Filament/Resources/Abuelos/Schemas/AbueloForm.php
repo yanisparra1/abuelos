@@ -20,9 +20,7 @@ class AbueloForm
                     ->required(),
                 DatePicker::make('fecha_nacimiento')
                     ->required(),
-                TextInput::make('edad')
-                    ->required()
-                    ->numeric(),
+
                 TextInput::make('sexo')
                     ->required(),
                 TextInput::make('direccion')

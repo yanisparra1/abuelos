@@ -26,9 +26,9 @@ class AbuelosTable
                 TextColumn::make('fecha_nacimiento')
                     ->date()
                     ->sortable(),
-                TextColumn::make('edad')
+                /*TextColumn::make('edad')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable(),*/
                 TextColumn::make('sexo')
                     ->searchable(),
                 TextColumn::make('direccion')

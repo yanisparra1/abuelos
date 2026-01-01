@@ -21,9 +21,9 @@ class HomeController extends Controller
         $dompdf->render(); // Renderizar el PDF
     
         $name = Uuid::uuid4()->toString(); // Generar el nombre del archivo
-    
-        return $dompdf->stream("$name.pdf", [
-            'Attachment' => false, // Permitir que se abra en el navegador
-        ]);
+                
+            return response()->streamDownload(function () use ($dompdf) {
+                echo $dompdf->output();
+            }, "$name.pdf");
     }
 }
