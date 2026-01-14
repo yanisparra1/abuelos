@@ -40,7 +40,7 @@
         <tr>
             <td><strong>Nombre: {{$historia->abuelo->nombre}} {{$historia->abuelo->apellido}}</strong>  </td>
             <td><strong>Fecha:  </strong> {{ \Carbon\Carbon::now()->format('d/m/Y') }}</td>
-            <td><strong>Genero:</strong>{{$historia->abuelo->sexo}}  - <strong>Edad:</strong> {{ \Carbon\Carbon::parse($historia->abuelo->fecha_nacimiento)->age }} </td>
+            <td><strong>Genero:</strong>F  / <strong>Edad:</strong> {{ \Carbon\Carbon::parse($historia->abuelo->fecha_nacimiento)->age }} </td>
            
         </tr>
         <tr>
